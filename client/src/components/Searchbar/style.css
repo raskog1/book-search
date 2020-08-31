@@ -1,0 +1,16 @@
+.searchbar {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  width: 60%;
+  padding: 40px;
+  margin: 50px auto;
+  border-radius: 5px;
+}
+
+.btn {
+  width: 100px;
+  color: white;
+  background-color: darkslategray;
+  margin: 10px 0;
+}
