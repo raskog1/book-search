@@ -10,6 +10,15 @@ function Search() {
   const [books, setBooks] = useState([]);
   const [formObject, setFormObject] = useState({});
 
+  // function formatAuthors(authors) {
+  //   const commaAuthors = authors;
+  //   for (let i = 0; i < authors.length - 1; i++) {
+  //     authors[i] += ", ";
+  //     commaAuthors.push(authors[i]);
+  //   }
+  //   return commaAuthors;
+  // }
+
   function handleInputChange(e) {
     const { name, value } = e.target;
     setFormObject({ ...formObject, [name]: value });
@@ -17,12 +26,34 @@ function Search() {
 
   function handleFormSubmit(e) {
     e.preventDefault();
+    console.log(e.target);
     const { search } = formObject;
     if (search) {
       console.log(`Searching for ${search}`);
       API.searchId(search).then((res) => setBooks(res.data.items));
       // .then(console.log(books));
     }
+  }
+
+  function handleAddButton(e) {
+    e.preventDefault();
+
+    console.log(e.target);
+    // const { id, title, authors, imageLinks, infoLink, subtitle, description } = e.target;
+  }
+
+  function formatAuthors(authors) {
+    if (authors && authors.length > 0) {
+      return authors.join(", ");
+    }
+    return "Unknown";
+  }
+
+  function getImage(images) {
+    if (images && images.smallThumbnail) {
+      return images.smallThumbnail;
+    }
+    return;
   }
 
   console.log(books);
@@ -38,18 +69,12 @@ function Search() {
         name="search"
         placeholder="Enter title or author here..."
       />
-      <Results>
-        {books.map((book) => (
-          <ResultItem key={book.id}>
-            <a href={book.volumeInfo.infoLink}>
-              <h5>
-                {book.volumeInfo.title} by {book.volumeInfo.authors.join(", ")}
-              </h5>
-            </a>
-            <p className="dropdown">{book.volumeInfo.description}</p>
-          </ResultItem>
-        ))}
-      </Results>
+      <Results
+        books={books}
+        handleAddButton={handleAddButton}
+        formatAuthors={formatAuthors}
+        getImage={getImage}
+      />
     </>
   );
 }

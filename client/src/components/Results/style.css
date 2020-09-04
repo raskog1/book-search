@@ -1,17 +1,16 @@
 h4 {
-  padding: 10px;
-  flex: 1;
+  color: white;
+  padding: 12px;
 }
 
-ul {
-  flex: 9;
+.list-group {
+  margin-bottom: 40px;
 }
 
 .results {
-  display: flex;
+  height: 100%;
   width: 60%;
-  background-color: white;
+  background-color: darkslategray;
   border-radius: 5px;
   margin: auto;
-  height: 500px;
 }

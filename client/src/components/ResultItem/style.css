@@ -1,0 +1,37 @@
+a {
+  color: darkslategray;
+}
+
+h5 {
+  flex: 4;
+  margin-top: 10px;
+}
+
+h5:hover {
+  text-decoration: underline;
+}
+
+img {
+  flex: 1;
+  float: left;
+  padding: 10px;
+}
+
+p {
+  display: flex;
+}
+
+button {
+  float: right;
+}
+
+.book-link {
+  background-color: white;
+  margin: 5px;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.addButton {
+  margin-right: 10px;
+}
