@@ -32,7 +32,7 @@ app.use(routes);
 // Serve static assets in production
 if (process.env.NODE_ENV === "production") {
   // Set static folder
-  app.use("/static", express.static(path.join(__dirname, "client/build")));
+  app.use(express.static(path.join(__dirname, "client/build")));
   // The "catchall" handler:  for any request that doesn't
   // match one above, send back React's index.html file
   // app.get("*", (req, res) => {
