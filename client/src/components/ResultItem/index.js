@@ -1,12 +1,40 @@
 import React from "react";
 import "./style.css";
+import API from "../../utils/API";
 
 function ResultItem({
   book: { title, authors, imageLinks, infoLink, subtitle, description },
-  handleAddButton,
-  formatAuthors,
-  getImage,
+  googleId,
 }) {
+  function addButton(e) {
+    if (e.target.value !== "Saved") {
+      API.saveBook({
+        volumeInfo: {
+          title,
+          authors,
+          imageLinks,
+          infoLink,
+          subtitle,
+          description,
+        },
+      }).then((e.target.value = "Saved"));
+    }
+  }
+
+  function formatAuthors(authors) {
+    if (authors && authors.length > 0) {
+      return authors.join(", ");
+    }
+    return "Unknown";
+  }
+
+  function getImage(images) {
+    if (images && images.smallThumbnail) {
+      return images.smallThumbnail;
+    }
+    return;
+  }
+
   return (
     <div className="book-link">
       <a href={infoLink}>
@@ -16,13 +44,13 @@ function ResultItem({
         </h5>
       </a>
       <p className="dropdown">{description}</p>
-      <button
+      <input
+        type="button"
         className="btn addButton"
-        onClick={handleAddButton}
+        onClick={addButton}
         style={{ marginLeft: "auto", marginBottom: 10 }}
-      >
-        Add
-      </button>
+        value="Add"
+      />
     </div>
   );
 }

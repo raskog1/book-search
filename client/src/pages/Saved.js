@@ -1,13 +1,27 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Navbar from "../components/Navbar";
+import Results from "../components/Results";
+import API from "../utils/API";
 
-function Search() {
+function Saved() {
+  const [books, setBooks] = useState([]);
+
+  useEffect(() => {
+    API.getBooks().then((result) => setBooks(result.data));
+  });
+
+  // async function getSaved() {
+  //   const books = await API.getBooks();
+  //   console.log(books.data);
+  //   setBooks(books.data);
+  // }
+
   return (
     <>
       <Navbar />
-      <h1>SAVED</h1>
+      <Results books={books} />
     </>
   );
 }
 
-export default Search;
+export default Saved;

@@ -1,29 +1,31 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
+// Schema constructed to mimic the google API structure
 const bookSchema = new Schema({
-  id: {
-    type: String,
-    required: true,
-  },
-  title: {
-    type: String,
-    required: true,
-  },
-  subtitle: {
-    type: String,
-  },
-  authors: {
-    type: [String],
-  },
-  description: {
-    type: String,
-    required: true,
-  },
-  imageLinks: {
-    type: [String],
-  },
-  infoLink: {
-    type: String,
+  volumeInfo: {
+    title: {
+      type: String,
+      required: true,
+    },
+    subtitle: {
+      type: String,
+    },
+    authors: {
+      type: [String],
+    },
+    description: {
+      type: String,
+    },
+    imageLinks: {
+      type: Object,
+    },
+    infoLink: {
+      type: String,
+    },
   },
 });
+
+const Book = mongoose.model("book", bookSchema);
+
+module.exports = Book;

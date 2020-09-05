@@ -21,7 +21,7 @@ p {
   display: flex;
 }
 
-button {
+.addButton {
   float: right;
 }
 
