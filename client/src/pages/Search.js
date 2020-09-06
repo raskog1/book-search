@@ -37,7 +37,7 @@ function Search() {
         name="search"
         placeholder="Enter title or author here..."
       />
-      <Results books={books} />
+      <Results books={books} buttonvalue="Add" />
     </>
   );
 }

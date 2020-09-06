@@ -4,10 +4,12 @@ import API from "../../utils/API";
 
 function ResultItem({
   book: { title, authors, imageLinks, infoLink, subtitle, description },
-  googleId,
+  buttonvalue,
+  _id,
 }) {
-  function addButton(e) {
-    if (e.target.value !== "Saved") {
+  function handleButton(e) {
+    console.log(_id);
+    if (e.target.value === "Add") {
       API.saveBook({
         volumeInfo: {
           title,
@@ -18,6 +20,8 @@ function ResultItem({
           description,
         },
       }).then((e.target.value = "Saved"));
+    } else if (e.target.value === "Delete") {
+      API.deleteBook(_id);
     }
   }
 
@@ -46,10 +50,10 @@ function ResultItem({
       <p className="dropdown">{description}</p>
       <input
         type="button"
-        className="btn addButton"
-        onClick={addButton}
+        className="btn handleButton"
+        onClick={handleButton}
         style={{ marginLeft: "auto", marginBottom: 10 }}
-        value="Add"
+        value={buttonvalue}
       />
     </div>
   );

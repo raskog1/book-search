@@ -3,16 +3,19 @@ import ResultItem from "../ResultItem";
 import "./style.css";
 
 // Passing in props exactly as they are in Search.js
-function Results({ books }) {
+function Results({ books, buttonvalue }) {
   return (
     <div className="results">
       <h4>Search Results</h4>
 
       <ul className="list-group">
-        {/* For the book array passed in, map through it and pass in each
-        book as a prop, as well as the button handler */}
         {books.map((book) => (
-          <ResultItem book={book.volumeInfo} />
+          <ResultItem
+            book={book.volumeInfo}
+            _id={book._id}
+            key={book._id}
+            buttonvalue={buttonvalue}
+          />
         ))}
       </ul>
     </div>

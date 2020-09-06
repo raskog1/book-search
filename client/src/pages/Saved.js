@@ -10,16 +10,10 @@ function Saved() {
     API.getBooks().then((result) => setBooks(result.data));
   });
 
-  // async function getSaved() {
-  //   const books = await API.getBooks();
-  //   console.log(books.data);
-  //   setBooks(books.data);
-  // }
-
   return (
     <>
       <Navbar />
-      <Results books={books} />
+      <Results books={books} buttonvalue="Delete" />
     </>
   );
 }
