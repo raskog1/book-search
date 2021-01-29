@@ -29,4 +29,4 @@ Future releases will include many more features, such as sorting your reading li
 
 ## Contact
 
-Please contact me at [ryan.skog@outlook.com]ryan.skog@outlook.com with any questions, concerns, or opportunities.
+Please contact me at [ryan.skog@outlook.com](ryan.skog@outlook.com) with any questions, concerns, or opportunities.
